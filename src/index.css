@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Declare font family variables */
+    --indie-flower: 'Indie Flower', 'Inter', sans-serif;
+    --inter: 'Inter', sans-serif;
+    --mono: 'Roboto Mono', monospace;
+    --outfit: 'Outfit', sans-serif;
+}
+
+@layer base {
+    *::selection {
+        @apply bg-emerald-200;
+    }
+
+    body, input, button {
+        font-family: var(--inter);
+    }
+
+    input {
+        @apply border-2 border-emerald-200 px-4 py-2.5 rounded-lg shadow bg-white hover:bg-emerald-400 focus:bg-emerald-900 hover:placeholder:text-emerald-950 focus:placeholder:text-emerald-50 hover:rounded-2xl focus:rounded-2xl transition-all focus:border-emerald-200 focus:text-emerald-50;
+    }
+
+    a {
+        @apply text-blue-500 underline px-2 inline-block hover:text-blue-700;
+    }
+
+    button {
+        @apply select-none;
+    }
+
+    button[type="submit"]:not(.no-prestyle) {
+        @apply bg-emerald-900 text-emerald-50 py-1 text-lg rounded-lg font-semibold hover:shadow-2xl hover:bg-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none;
+    }
+}
+
+@layer components {
+    .__container {
+        @apply relative w-full max-w-3xl mx-auto border py-12 min-h-screen sm:min-h-0 sm:py-6 px-4 lg:px-6 xl:px-8 sm:my-6 md:my-8 xl:my-10 border-slate-300 sm:rounded-lg shadow bg-white;
+    }
+
+    .monospaced, .footer-text {
+        @apply font-medium !important;
+    }
+
+    .monospaced {
+        font-family: var(--mono);
+    }
+
+    .footer-text {
+        font-family: var(--indie-flower);
+    }
+
+    .title {
+        @apply text-right sm:text-center text-black font-bold text-3xl tracking-tight mb-6;
+    }
+
+    .todo-item {
+        @apply relative overflow-hidden transition;
+    }
+
+    .todo-item:not(.edit-mode):hover > div:first-child {
+        @apply border-slate-400 !important;
+        width: calc(100% - 164px);
+    }
+
+    .todo-item.edit-mode > div:first-child {
+        @apply border-amber-800 border-2;
+    }
+
+    .todo-item:hover > div:last-child {
+        @apply z-10;
+    }
+
+    .edit-mode {
+        @apply border-amber-800 !important;
+    }
+
+    .white-overlay {
+        @apply absolute inset-0 bg-white opacity-50 z-10;
+    }
+
+    .dashed-border {
+        @apply border-2 border-dashed rounded p-2 outline-0 hover:border-amber-200 focus:border-amber-400;
+    }
+}
